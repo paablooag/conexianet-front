@@ -24,13 +24,12 @@
           </div>
           
           <h1 class="text-4xl md:text-7xl font-mono font-bold mb-6 text-gray-900">
-            <span class="block">ASISTENTE DIGITAL</span>
-            <span class="block neon-text mt-2">RELACIONES EMPRESARIALES</span>
+            <span class="block">SOFTWARE PARA</span>
+            <span class="block neon-text mt-2">HAMBURGUESERÍAS</span>
           </h1>
           
           <p class="text-lg md:text-xl mb-12 max-w-4xl mx-auto text-gray-600 font-mono leading-relaxed">
-            Plataforma inteligente que revoluciona la gestión de relaciones empresariales.<br>
-            Centraliza, automatiza y optimiza contactos con tecnología de vanguardia.
+            <strong>Automatización restaurantes</strong> y <strong>CRM para restaurantes</strong> que centraliza, automatiza y optimiza contactos con tecnología de vanguardia en un solo <strong>SaaS para restaurantes</strong>.
           </p>
           
           <div class="flex flex-col sm:flex-row gap-6 justify-center">
@@ -69,10 +68,10 @@
             [ MÓDULOS DEL SISTEMA ]
           </div>
           <h2 class="text-3xl md:text-5xl font-mono font-bold text-gray-900 mb-6">
-            FUNCIONES PRINCIPALES
+            CÓMO AUTOMATIZAR PEDIDOS EN UNA HAMBURGUESERÍA
           </h2>
           <p class="text-lg text-gray-600 max-w-3xl mx-auto font-mono">
-            Descubre cómo nuestro ADRE transforma la gestión de relaciones empresariales
+            <strong>Herramienta online para reservas y marketing hamburguesería</strong> que centraliza contactos, proveedores y suscriptores de newsletter con historial de interacciones.
           </p>
         </div>
 
@@ -86,11 +85,11 @@
               </svg>
             </div>
             <h3 class="text-xl font-mono font-semibold text-gray-900 mb-4 group-hover:text-cyan-600 transition-colors">
-              CENTRALIZACIÓN
+              DASHBOARD PEDIDOS HAMBURGUESERÍA
             </h3>
             <p class="text-gray-600 font-mono text-sm leading-relaxed">
-              Centraliza todos tus contactos y su historial de interacciones en una sola plataforma. 
-              Nunca más pierdas información importante de tus clientes, proveedores y colaboradores.
+              Centraliza todos los contactos, proveedores y suscriptores de newsletter con historial de interacciones. 
+              <strong>Gestionar proveedores restaurante online</strong> nunca fue tan fácil.
             </p>
             <div class="mt-4 text-xs font-mono text-cyan-600 bg-cyan-100 px-2 py-1 rounded">
               [ STATUS: ACTIVO ]
@@ -106,11 +105,11 @@
               </svg>
             </div>
             <h3 class="text-xl font-mono font-semibold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
-              AUTOMATIZACIÓN
+              AUTOMATIZAR RESERVAS HAMBURGUESERÍA
             </h3>
             <p class="text-gray-600 font-mono text-sm leading-relaxed">
-              Automatiza tareas repetitivas como recordatorios, seguimiento de reuniones y envíos de mensajes. 
-              Ahorra tiempo y nunca olvides una tarea importante.
+              Automatiza tareas repetitivas: recordatorios de pedidos, seguimiento de clientes, envíos de mensajes y promociones. 
+              <strong>Enviar promociones automáticas a clientes de restaurante</strong> nunca fue tan sencillo.
             </p>
             <div class="mt-4 text-xs font-mono text-blue-600 bg-blue-100 px-2 py-1 rounded">
               [ STATUS: ACTIVO ]
@@ -126,11 +125,11 @@
               </svg>
             </div>
             <h3 class="text-xl font-mono font-semibold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors">
-              ANÁLISIS
+              ENVIAR NEWSLETTER CLIENTES RESTAURANTE
             </h3>
             <p class="text-gray-600 font-mono text-sm leading-relaxed">
-              Analiza métricas clave y genera reportes automáticos. Toma decisiones basadas en datos 
-              reales sobre el rendimiento de tus relaciones empresariales.
+              Analiza métricas de marketing y genera reportes automáticos. Permite descargar reportes de newsletter 
+              y Search Console para evaluar el rendimiento y alcance de campañas.
             </p>
             <div class="mt-4 text-xs font-mono text-purple-600 bg-purple-100 px-2 py-1 rounded">
               [ STATUS: ACTIVO ]
@@ -146,11 +145,11 @@
               </svg>
             </div>
             <h3 class="text-xl font-mono font-semibold text-gray-900 mb-4 group-hover:text-yellow-600 transition-colors">
-              INTELIGENCIA IA
+              SAAS PARA MEJORAR VENTAS Y CLIENTES
             </h3>
             <p class="text-gray-600 font-mono text-sm leading-relaxed">
-              Usa inteligencia artificial para sugerir acciones inteligentes, priorizar tareas 
-              y optimizar la comunicación con cada contacto.
+              Usa IA para sugerir acciones inteligentes, priorizar tareas y optimizar la comunicación 
+              con clientes y proveedores en tu hamburguesería.
             </p>
             <div class="mt-4 text-xs font-mono text-yellow-600 bg-yellow-100 px-2 py-1 rounded">
               [ STATUS: ACTIVO ]
@@ -166,11 +165,11 @@
               </svg>
             </div>
             <h3 class="text-xl font-mono font-semibold text-gray-900 mb-4 group-hover:text-teal-600 transition-colors">
-              INTEGRACIONES
+              INTEGRACIONES AVANZADAS
             </h3>
             <p class="text-gray-600 font-mono text-sm leading-relaxed">
-              Se integra perfectamente con calendarios, CRMs, email, mensajería y redes sociales. 
-              Todo tu ecosistema digital conectado en una sola plataforma.
+              Se integra con calendarios, CRMs, email, mensajería, redes sociales y Google Search Console 
+              para métricas SEO de la web del restaurante.
             </p>
             <div class="mt-4 text-xs font-mono text-teal-600 bg-teal-100 px-2 py-1 rounded">
               [ STATUS: ACTIVO ]
@@ -186,11 +185,11 @@
               </svg>
             </div>
             <h3 class="text-xl font-mono font-semibold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors">
-              VALOR DIFERENCIAL
+              VALOR DIFERENCIAL ADRE
             </h3>
             <p class="text-gray-600 font-mono text-sm leading-relaxed">
-              Combina automatización, centralización y analítica avanzada en un solo SaaS. 
-              Algo que los CRMs tradicionales y herramientas dispersas no ofrecen de manera integrada.
+              Combina automatización, centralización y analítica avanzada en un solo SaaS, adaptado a hamburgueserías. 
+              Algo que los CRMs tradicionales y herramientas de automatización dispersas no ofrecen de manera integrada.
             </p>
             <div class="mt-4 text-xs font-mono text-emerald-600 bg-emerald-100 px-2 py-1 rounded">
               [ STATUS: PREMIUM ]
@@ -208,10 +207,10 @@
             [ ANÁLISIS DE RENDIMIENTO ]
           </div>
           <h2 class="text-3xl md:text-5xl font-mono font-bold text-gray-900 mb-6">
-            ¿POR QUÉ CONNEXIANET?
+            ¿POR QUÉ ELEGIR NUESTRO ADRE?
           </h2>
           <p class="text-lg text-gray-600 max-w-3xl mx-auto font-mono">
-            Descubre los beneficios que obtendrás al implementar nuestro ADRE en tu empresa
+            Un <strong>Asistente Digital de Relaciones Empresariales (ADRE)</strong> que ayuda a hamburgueserías, autónomos y pequeñas cadenas de restaurantes a gestionar, automatizar y optimizar sus relaciones con clientes, proveedores y colaboradores.
           </p>
         </div>
 
@@ -316,10 +315,10 @@
           [ ACCESO AL SISTEMA ]
         </div>
         <h2 class="text-3xl md:text-5xl font-mono font-bold text-gray-900 mb-6">
-          ¿LISTO PARA REVOLUCIONAR?
+          ¿LISTO PARA AUTOMATIZAR TU HAMBURGUESERÍA?
         </h2>
         <p class="text-lg mb-8 text-gray-600 font-mono">
-          Únete a cientos de empresas que ya confían en ConnexiaNet para optimizar su gestión de contactos.
+          Únete a cientos de hamburgueserías que ya confían en nuestro <strong>SaaS para restaurantes</strong> para optimizar su gestión de contactos y automatizar sus procesos.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center">
           <Button variant="neon" size="lg" @click="handleDemo">
@@ -355,10 +354,10 @@
 
 <script setup>
 const handleDemo = () => {
-  navigateTo('/auth')
+  navigateTo('/iniciar-sesion')
 }
 
 const handleRegister = () => {
-  navigateTo('/auth')
+  navigateTo('/iniciar-sesion?mode=register')
 }
 </script>

@@ -10,7 +10,7 @@
               <div class="absolute inset-0 border border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             <span class="ml-3 text-xl font-mono font-bold text-gray-900 group-hover:text-cyan-600 transition-colors duration-300">
-              ConnexiaNet
+              ConexiaNet Hamburgueserías
             </span>
           </div>
           <p class="text-gray-600 mb-6 max-w-md font-mono text-sm leading-relaxed">
@@ -62,7 +62,7 @@
       <div class="border-t border-slate-300 mt-8 pt-8">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-gray-500 text-sm font-mono">
-            © 2024 ConnexiaNet.es. Todos los derechos reservados.
+            © 2024 ConexiaNet Hamburgueserías
           </p>
           <div class="flex space-x-6 mt-4 md:mt-0">
             <a href="#" class="text-gray-500 hover:text-green-400 text-sm font-mono transition-colors">POLÍTICA DE PRIVACIDAD</a>

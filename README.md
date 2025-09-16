@@ -1,6 +1,6 @@
-# ConnexiaNet Frontend
+# ConexiaNet Frontend
 
-Landing page para ConnexiaNet - Asistente Digital de Relaciones Empresariales (ADRE)
+Landing page para ConexiaNet - Asistente Digital de Relaciones Empresariales (ADRE)
 
 ## 🚀 Características
 
@@ -150,6 +150,6 @@ MIT License - Ver [LICENSE](LICENSE) para más detalles
 
 ## 📞 Contacto
 
-ConnexiaNet - [@connexianet](https://twitter.com/connexianet)
+ConexiaNet - [@connexianet](https://twitter.com/connexianet)
 
 Link del Proyecto: [https://github.com/tu-usuario/conexianet-front](https://github.com/tu-usuario/conexianet-front)

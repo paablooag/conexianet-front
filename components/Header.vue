@@ -10,7 +10,7 @@
               <div class="absolute inset-0 border border-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             <span class="ml-3 text-xl font-mono font-bold text-gray-900 group-hover:text-cyan-600 transition-colors duration-300">
-              ConnexiaNet
+              ConexiaNet Hamburgueserías
             </span>
           </NuxtLink>
         </div>
@@ -96,10 +96,10 @@
 const mobileMenuOpen = ref(false)
 
 const handleLogin = () => {
-  navigateTo('/auth')
+  navigateTo('/iniciar-sesion')
 }
 
 const handleRegister = () => {
-  navigateTo('/auth')
+  navigateTo('/iniciar-sesion?mode=register')
 }
 </script>

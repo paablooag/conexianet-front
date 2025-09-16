@@ -1,10 +1,10 @@
 <template>
-  <div class="futuristic-bg min-h-screen">
+  <div class="futuristic-bg min-h-screen flex flex-col">
     <!-- Header -->
     <Header />
 
     <!-- Main Auth Section -->
-    <section class="py-20 relative overflow-hidden">
+    <section class="py-20 relative overflow-hidden flex-1">
       <!-- Background Grid -->
       <div class="absolute inset-0 opacity-2">
         <div class="grid grid-cols-12 h-full">
@@ -18,7 +18,7 @@
        <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
 
         <!-- Auth Container -->
-        <div class="relative">
+        <div class="relative min-h-[600px]">
           <!-- Login Form -->
           <div 
             :class="[
@@ -302,15 +302,18 @@
 <script setup>
 // Meta tags
 useHead({
-  title: 'Autenticación - ConnexiaNet ADRE',
+  title: 'Autenticación - ConexiaNet ADRE',
   meta: [
-    { name: 'description', content: 'Accede a ConnexiaNet ADRE - Asistente Digital de Relaciones Empresariales' }
+    { name: 'description', content: 'Accede a ConexiaNet ADRE - Asistente Digital de Relaciones Empresariales' }
   ]
 })
 
-// Reactive data
-const showLogin = ref(true)
-const showRegister = ref(false)
+// Get route query parameters
+const route = useRoute()
+
+// Reactive data - check if mode=register is in query params
+const showLogin = ref(!route.query.mode || route.query.mode !== 'register')
+const showRegister = ref(route.query.mode === 'register')
 const isLoading = ref(false)
 const acceptTerms = ref(false)
 const showLoginPassword = ref(false)
