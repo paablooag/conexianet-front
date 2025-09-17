@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Backend API Endpoints - ConexiaNet</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/proc/self/fd/11" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Backend API Endpoints - ConexiaNet</h1>
+</header>
+<h1 id="backend-api-endpoints---conexianet">BACKEND API ENDPOINTS - CONEXIANET</h1>
+<h2 id="índice">ÍNDICE</h2>
+<ol type="1">
+<li><a href="#autenticación-y-usuarios">Autenticación y Usuarios</a></li>
+<li><a href="#gestión-de-restaurantes">Gestión de Restaurantes</a></li>
+<li><a href="#sistema-de-reservas">Sistema de Reservas</a></li>
+<li><a href="#blog-y-contenido">Blog y Contenido</a></li>
+<li><a href="#dashboard-y-estadísticas">Dashboard y Estadísticas</a></li>
+<li><a href="#widget-de-reservas">Widget de Reservas</a></li>
+</ol>
+<hr />
+<h2 id="autenticación-y-usuarios">AUTENTICACIÓN Y USUARIOS</h2>
+<h3 id="post-apiauthregister">POST /api/auth/register</h3>
+<p><strong>Descripción:</strong> Registro de nuevos usuarios <strong>Body:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>  <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;usuario@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a>  <span class="dt">&quot;password&quot;</span><span class="fu">:</span> <span class="st">&quot;password123&quot;</span><span class="fu">,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Nombre Usuario&quot;</span><span class="fu">,</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>  <span class="dt">&quot;restaurant_name&quot;</span><span class="fu">:</span> <span class="st">&quot;Mi Restaurante&quot;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="dt">&quot;user&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>      <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;usuario@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Nombre Usuario&quot;</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true"></a>      <span class="dt">&quot;created_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true"></a>    <span class="fu">},</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true"></a>    <span class="dt">&quot;token&quot;</span><span class="fu">:</span> <span class="st">&quot;jwt_token_here&quot;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="post-apiauthlogin">POST /api/auth/login</h3>
+<p><strong>Descripción:</strong> Inicio de sesión de usuarios <strong>Body:</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a>  <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;usuario@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a>  <span class="dt">&quot;password&quot;</span><span class="fu">:</span> <span class="st">&quot;password123&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true"></a>    <span class="dt">&quot;user&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true"></a>      <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;usuario@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Nombre Usuario&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true"></a>    <span class="fu">},</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true"></a>    <span class="dt">&quot;token&quot;</span><span class="fu">:</span> <span class="st">&quot;jwt_token_here&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="post-apiauthlogout">POST /api/auth/logout</h3>
+<p><strong>Descripción:</strong> Cerrar sesión <strong>Headers:</strong> Authorization: Bearer {token} <strong>Response:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a>  <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Sesión cerrada correctamente&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="get-apiauthme">GET /api/auth/me</h3>
+<p><strong>Descripción:</strong> Obtener información del usuario autenticado <strong>Headers:</strong> Authorization: Bearer {token} <strong>Response:</strong></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a>    <span class="dt">&quot;user&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true"></a>      <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;usuario@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Nombre Usuario&quot;</span><span class="fu">,</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true"></a>      <span class="dt">&quot;restaurant_id&quot;</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true"></a>    <span class="fu">}</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="gestión-de-restaurantes">GESTIÓN DE RESTAURANTES</h2>
+<h3 id="get-apirestaurant">GET /api/restaurant</h3>
+<p><strong>Descripción:</strong> Obtener información del restaurante del usuario <strong>Headers:</strong> Authorization: Bearer {token} <strong>Response:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true"></a>    <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Hamburguesería El Buen Sabor&quot;</span><span class="fu">,</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true"></a>    <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;hamburgueseria-el-buen-sabor&quot;</span><span class="fu">,</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true"></a>    <span class="dt">&quot;address&quot;</span><span class="fu">:</span> <span class="st">&quot;Calle Principal 123, Madrid&quot;</span><span class="fu">,</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true"></a>    <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 123 456 789&quot;</span><span class="fu">,</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true"></a>    <span class="dt">&quot;schedule&quot;</span><span class="fu">:</span> <span class="st">&quot;Lun-Dom: 12:00-16:00, 19:00-23:00&quot;</span><span class="fu">,</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true"></a>    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Hamburguesería especializada en hamburguesas gourmet&quot;</span><span class="fu">,</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true"></a>    <span class="dt">&quot;reservations_enabled&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true"></a>    <span class="dt">&quot;max_capacity&quot;</span><span class="fu">:</span> <span class="dv">50</span><span class="fu">,</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true"></a>    <span class="dt">&quot;has_reservation_page&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true"></a>    <span class="dt">&quot;user_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true"></a>    <span class="dt">&quot;created_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span><span class="fu">,</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true"></a>    <span class="dt">&quot;updated_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="put-apirestaurant">PUT /api/restaurant</h3>
+<p><strong>Descripción:</strong> Actualizar configuración del restaurante <strong>Headers:</strong> Authorization: Bearer {token} <strong>Body:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Nuevo Nombre del Restaurante&quot;</span><span class="fu">,</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a>  <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;nuevo-slug&quot;</span><span class="fu">,</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a>  <span class="dt">&quot;address&quot;</span><span class="fu">:</span> <span class="st">&quot;Nueva Dirección 456, Barcelona&quot;</span><span class="fu">,</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a>  <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 987 654 321&quot;</span><span class="fu">,</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a>  <span class="dt">&quot;schedule&quot;</span><span class="fu">:</span> <span class="st">&quot;Lun-Dom: 12:00-16:00, 19:00-23:00&quot;</span><span class="fu">,</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a>  <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Nueva descripción del restaurante&quot;</span><span class="fu">,</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a>  <span class="dt">&quot;reservations_enabled&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a>  <span class="dt">&quot;max_capacity&quot;</span><span class="fu">:</span> <span class="dv">75</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true"></a>    <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Nuevo Nombre del Restaurante&quot;</span><span class="fu">,</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true"></a>    <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;nuevo-slug&quot;</span><span class="fu">,</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true"></a>    <span class="dt">&quot;address&quot;</span><span class="fu">:</span> <span class="st">&quot;Nueva Dirección 456, Barcelona&quot;</span><span class="fu">,</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true"></a>    <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 987 654 321&quot;</span><span class="fu">,</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true"></a>    <span class="dt">&quot;schedule&quot;</span><span class="fu">:</span> <span class="st">&quot;Lun-Dom: 12:00-16:00, 19:00-23:00&quot;</span><span class="fu">,</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true"></a>    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Nueva descripción del restaurante&quot;</span><span class="fu">,</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true"></a>    <span class="dt">&quot;reservations_enabled&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true"></a>    <span class="dt">&quot;max_capacity&quot;</span><span class="fu">:</span> <span class="dv">75</span><span class="fu">,</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true"></a>    <span class="dt">&quot;has_reservation_page&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true"></a>    <span class="dt">&quot;updated_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T11:00:00Z&quot;</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="post-apirestaurantcreate-reservation-page">POST /api/restaurant/create-reservation-page</h3>
+<p><strong>Descripción:</strong> Crear página de reservas para el restaurante <strong>Headers:</strong> Authorization: Bearer {token} <strong>Response:</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a>    <span class="dt">&quot;restaurant_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a>    <span class="dt">&quot;has_reservation_page&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true"></a>    <span class="dt">&quot;reservation_url&quot;</span><span class="fu">:</span> <span class="st">&quot;https://conexianet.com/reservas/hamburgueseria-el-buen-sabor&quot;</span><span class="fu">,</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true"></a>    <span class="dt">&quot;created_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="get-apirestaurantsslug">GET /api/restaurants/{slug}</h3>
+<p><strong>Descripción:</strong> Obtener información pública del restaurante por slug <strong>Response:</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a>    <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Hamburguesería El Buen Sabor&quot;</span><span class="fu">,</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true"></a>    <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;hamburgueseria-el-buen-sabor&quot;</span><span class="fu">,</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true"></a>    <span class="dt">&quot;address&quot;</span><span class="fu">:</span> <span class="st">&quot;Calle Principal 123, Madrid&quot;</span><span class="fu">,</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true"></a>    <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 123 456 789&quot;</span><span class="fu">,</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true"></a>    <span class="dt">&quot;schedule&quot;</span><span class="fu">:</span> <span class="st">&quot;Lun-Dom: 12:00-16:00, 19:00-23:00&quot;</span><span class="fu">,</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true"></a>    <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;Hamburguesería especializada en hamburguesas gourmet&quot;</span><span class="fu">,</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true"></a>    <span class="dt">&quot;reservations_enabled&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true"></a>    <span class="dt">&quot;max_capacity&quot;</span><span class="fu">:</span> <span class="dv">50</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="sistema-de-reservas">SISTEMA DE RESERVAS</h2>
+<h3 id="post-apireservations">POST /api/reservations</h3>
+<p><strong>Descripción:</strong> Crear nueva reserva <strong>Body:</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a>  <span class="dt">&quot;restaurant_slug&quot;</span><span class="fu">:</span> <span class="st">&quot;hamburgueseria-el-buen-sabor&quot;</span><span class="fu">,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true"></a>  <span class="dt">&quot;date&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-20&quot;</span><span class="fu">,</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true"></a>  <span class="dt">&quot;time&quot;</span><span class="fu">:</span> <span class="st">&quot;20:00&quot;</span><span class="fu">,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true"></a>  <span class="dt">&quot;guests&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Juan Pérez&quot;</span><span class="fu">,</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true"></a>  <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;juan@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true"></a>  <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 666 123 456&quot;</span><span class="fu">,</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true"></a>  <span class="dt">&quot;special_requests&quot;</span><span class="fu">:</span> <span class="st">&quot;Mesa cerca de la ventana&quot;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true"></a>    <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true"></a>    <span class="dt">&quot;restaurant_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true"></a>    <span class="dt">&quot;date&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-20&quot;</span><span class="fu">,</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true"></a>    <span class="dt">&quot;time&quot;</span><span class="fu">:</span> <span class="st">&quot;20:00&quot;</span><span class="fu">,</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true"></a>    <span class="dt">&quot;guests&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Juan Pérez&quot;</span><span class="fu">,</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true"></a>    <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;juan@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true"></a>    <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 666 123 456&quot;</span><span class="fu">,</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true"></a>    <span class="dt">&quot;special_requests&quot;</span><span class="fu">:</span> <span class="st">&quot;Mesa cerca de la ventana&quot;</span><span class="fu">,</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true"></a>    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="st">&quot;Confirmada&quot;</span><span class="fu">,</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true"></a>    <span class="dt">&quot;confirmation_code&quot;</span><span class="fu">:</span> <span class="st">&quot;ABC123&quot;</span><span class="fu">,</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true"></a>    <span class="dt">&quot;created_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="get-apireservations">GET /api/reservations</h3>
+<p><strong>Descripción:</strong> Obtener reservas del restaurante del usuario <strong>Headers:</strong> Authorization: Bearer {token} <strong>Query Parameters:</strong> - <code>status</code> (opcional): Filtrar por estado (Confirmada, Cancelada, Pendiente) - <code>date</code> (opcional): Filtrar por fecha (YYYY-MM-DD) - <code>page</code> (opcional): Número de página (default: 1) - <code>limit</code> (opcional): Elementos por página (default: 20) <strong>Response:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a>    <span class="dt">&quot;reservations&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a>      <span class="fu">{</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a>        <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a>        <span class="dt">&quot;date&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-20&quot;</span><span class="fu">,</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a>        <span class="dt">&quot;time&quot;</span><span class="fu">:</span> <span class="st">&quot;20:00&quot;</span><span class="fu">,</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a>        <span class="dt">&quot;guests&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a>        <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Juan Pérez&quot;</span><span class="fu">,</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true"></a>        <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;juan@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true"></a>        <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 666 123 456&quot;</span><span class="fu">,</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true"></a>        <span class="dt">&quot;special_requests&quot;</span><span class="fu">:</span> <span class="st">&quot;Mesa cerca de la ventana&quot;</span><span class="fu">,</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true"></a>        <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="st">&quot;Confirmada&quot;</span><span class="fu">,</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true"></a>        <span class="dt">&quot;confirmation_code&quot;</span><span class="fu">:</span> <span class="st">&quot;ABC123&quot;</span><span class="fu">,</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true"></a>        <span class="dt">&quot;created_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true"></a>      <span class="fu">}</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true"></a>    <span class="dt">&quot;pagination&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true"></a>      <span class="dt">&quot;current_page&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true"></a>      <span class="dt">&quot;total_pages&quot;</span><span class="fu">:</span> <span class="dv">5</span><span class="fu">,</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true"></a>      <span class="dt">&quot;total_items&quot;</span><span class="fu">:</span> <span class="dv">100</span><span class="fu">,</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true"></a>      <span class="dt">&quot;items_per_page&quot;</span><span class="fu">:</span> <span class="dv">20</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true"></a>    <span class="fu">}</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="get-apireservationsid">GET /api/reservations/{id}</h3>
+<p><strong>Descripción:</strong> Obtener detalles de una reserva específica <strong>Headers:</strong> Authorization: Bearer {token} <strong>Response:</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true"></a>    <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true"></a>    <span class="dt">&quot;restaurant_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true"></a>    <span class="dt">&quot;date&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-20&quot;</span><span class="fu">,</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true"></a>    <span class="dt">&quot;time&quot;</span><span class="fu">:</span> <span class="st">&quot;20:00&quot;</span><span class="fu">,</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true"></a>    <span class="dt">&quot;guests&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true"></a>    <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Juan Pérez&quot;</span><span class="fu">,</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true"></a>    <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;juan@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true"></a>    <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 666 123 456&quot;</span><span class="fu">,</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true"></a>    <span class="dt">&quot;special_requests&quot;</span><span class="fu">:</span> <span class="st">&quot;Mesa cerca de la ventana&quot;</span><span class="fu">,</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true"></a>    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="st">&quot;Confirmada&quot;</span><span class="fu">,</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true"></a>    <span class="dt">&quot;confirmation_code&quot;</span><span class="fu">:</span> <span class="st">&quot;ABC123&quot;</span><span class="fu">,</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true"></a>    <span class="dt">&quot;created_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span><span class="fu">,</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true"></a>    <span class="dt">&quot;updated_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="put-apireservationsid">PUT /api/reservations/{id}</h3>
+<p><strong>Descripción:</strong> Actualizar estado de una reserva <strong>Headers:</strong> Authorization: Bearer {token} <strong>Body:</strong></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a>  <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="st">&quot;Cancelada&quot;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true"></a>    <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true"></a>    <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="st">&quot;Cancelada&quot;</span><span class="fu">,</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true"></a>    <span class="dt">&quot;updated_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T11:00:00Z&quot;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="delete-apireservationsid">DELETE /api/reservations/{id}</h3>
+<p><strong>Descripción:</strong> Eliminar una reserva <strong>Headers:</strong> Authorization: Bearer {token} <strong>Response:</strong></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a>  <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Reserva eliminada correctamente&quot;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="get-apireservationscalendar">GET /api/reservations/calendar</h3>
+<p><strong>Descripción:</strong> Obtener reservas para el calendario del dashboard <strong>Headers:</strong> Authorization: Bearer {token} <strong>Query Parameters:</strong> - <code>year</code>: Año (ej: 2024) - <code>month</code>: Mes (1-12) <strong>Response:</strong></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a>    <span class="dt">&quot;calendar&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a>      <span class="fu">{</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a>        <span class="dt">&quot;date&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-20&quot;</span><span class="fu">,</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a>        <span class="dt">&quot;reservations&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a>          <span class="fu">{</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a>            <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a>            <span class="dt">&quot;time&quot;</span><span class="fu">:</span> <span class="st">&quot;20:00&quot;</span><span class="fu">,</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a>            <span class="dt">&quot;guests&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a>            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Juan Pérez&quot;</span><span class="fu">,</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a>            <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="st">&quot;Confirmada&quot;</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a>          <span class="fu">}</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a>        <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a>        <span class="dt">&quot;total_reservations&quot;</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a>      <span class="fu">}</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true"></a>    <span class="ot">]</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="blog-y-contenido">BLOG Y CONTENIDO</h2>
+<h3 id="get-apiblogposts">GET /api/blog/posts</h3>
+<p><strong>Descripción:</strong> Obtener lista de artículos del blog <strong>Query Parameters:</strong> - <code>page</code> (opcional): Número de página (default: 1) - <code>limit</code> (opcional): Elementos por página (default: 10) - <code>category</code> (opcional): Filtrar por categoría <strong>Response:</strong></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a>    <span class="fu">{</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a>      <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Cómo Optimizar la Gestión de Pedidos en tu Hamburguesería&quot;</span><span class="fu">,</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>      <span class="dt">&quot;excerpt&quot;</span><span class="fu">:</span> <span class="st">&quot;Descubre las mejores estrategias para automatizar y optimizar la gestión de pedidos...&quot;</span><span class="fu">,</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true"></a>      <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;optimizar-gestion-pedidos-hamburgueseria&quot;</span><span class="fu">,</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true"></a>      <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Gestión&quot;</span><span class="fu">,</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true"></a>      <span class="dt">&quot;published_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span><span class="fu">,</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true"></a>      <span class="dt">&quot;reading_time&quot;</span><span class="fu">:</span> <span class="dv">5</span><span class="fu">,</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true"></a>      <span class="dt">&quot;author&quot;</span><span class="fu">:</span> <span class="st">&quot;Equipo ConexiaNet&quot;</span><span class="fu">,</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true"></a>      <span class="dt">&quot;tags&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;gestión&quot;</span><span class="ot">,</span> <span class="st">&quot;pedidos&quot;</span><span class="ot">,</span> <span class="st">&quot;automatización&quot;</span><span class="ot">]</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true"></a>    <span class="fu">}</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true"></a>  <span class="dt">&quot;pagination&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true"></a>    <span class="dt">&quot;current_page&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true"></a>    <span class="dt">&quot;total_pages&quot;</span><span class="fu">:</span> <span class="dv">3</span><span class="fu">,</span></span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true"></a>    <span class="dt">&quot;total_items&quot;</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true"></a>    <span class="dt">&quot;items_per_page&quot;</span><span class="fu">:</span> <span class="dv">10</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="get-apiblogpostsslug">GET /api/blog/posts/{slug}</h3>
+<p><strong>Descripción:</strong> Obtener artículo individual del blog <strong>Response:</strong></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a>    <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true"></a>    <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Cómo Optimizar la Gestión de Pedidos en tu Hamburguesería&quot;</span><span class="fu">,</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true"></a>    <span class="dt">&quot;excerpt&quot;</span><span class="fu">:</span> <span class="st">&quot;Descubre las mejores estrategias para automatizar y optimizar la gestión de pedidos...&quot;</span><span class="fu">,</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true"></a>    <span class="dt">&quot;content&quot;</span><span class="fu">:</span> <span class="st">&quot;&lt;h2&gt;Introducción&lt;/h2&gt;&lt;p&gt;La gestión eficiente de pedidos...&lt;/p&gt;&quot;</span><span class="fu">,</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true"></a>    <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;optimizar-gestion-pedidos-hamburgueseria&quot;</span><span class="fu">,</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true"></a>    <span class="dt">&quot;category&quot;</span><span class="fu">:</span> <span class="st">&quot;Gestión&quot;</span><span class="fu">,</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true"></a>    <span class="dt">&quot;published_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span><span class="fu">,</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true"></a>    <span class="dt">&quot;reading_time&quot;</span><span class="fu">:</span> <span class="dv">5</span><span class="fu">,</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true"></a>    <span class="dt">&quot;author&quot;</span><span class="fu">:</span> <span class="st">&quot;Equipo ConexiaNet&quot;</span><span class="fu">,</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true"></a>    <span class="dt">&quot;tags&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;gestión&quot;</span><span class="ot">,</span> <span class="st">&quot;pedidos&quot;</span><span class="ot">,</span> <span class="st">&quot;automatización&quot;</span><span class="ot">]</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="get-apiblogpostsrelatedslug">GET /api/blog/posts/related/{slug}</h3>
+<p><strong>Descripción:</strong> Obtener artículos relacionados <strong>Response:</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a>    <span class="fu">{</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a>      <span class="dt">&quot;id&quot;</span><span class="fu">:</span> <span class="dv">2</span><span class="fu">,</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true"></a>      <span class="dt">&quot;title&quot;</span><span class="fu">:</span> <span class="st">&quot;Marketing Digital para Restaurantes: Estrategias que Funcionan&quot;</span><span class="fu">,</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true"></a>      <span class="dt">&quot;excerpt&quot;</span><span class="fu">:</span> <span class="st">&quot;Aprende las técnicas de marketing digital más efectivas...&quot;</span><span class="fu">,</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true"></a>      <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;marketing-digital-restaurantes-estrategias&quot;</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true"></a>    <span class="fu">}</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true"></a>  <span class="ot">]</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="dashboard-y-estadísticas">DASHBOARD Y ESTADÍSTICAS</h2>
+<h3 id="get-apidashboardoverview">GET /api/dashboard/overview</h3>
+<p><strong>Descripción:</strong> Obtener estadísticas generales del dashboard <strong>Headers:</strong> Authorization: Bearer {token} <strong>Response:</strong></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a>    <span class="dt">&quot;reservations&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a>      <span class="dt">&quot;total&quot;</span><span class="fu">:</span> <span class="dv">150</span><span class="fu">,</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a>      <span class="dt">&quot;today&quot;</span><span class="fu">:</span> <span class="dv">8</span><span class="fu">,</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true"></a>      <span class="dt">&quot;confirmed&quot;</span><span class="fu">:</span> <span class="dv">120</span><span class="fu">,</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true"></a>      <span class="dt">&quot;cancelled&quot;</span><span class="fu">:</span> <span class="dv">15</span><span class="fu">,</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true"></a>      <span class="dt">&quot;pending&quot;</span><span class="fu">:</span> <span class="dv">15</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true"></a>    <span class="fu">},</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true"></a>    <span class="dt">&quot;revenue&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true"></a>      <span class="dt">&quot;total&quot;</span><span class="fu">:</span> <span class="fl">15000.50</span><span class="fu">,</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true"></a>      <span class="dt">&quot;this_month&quot;</span><span class="fu">:</span> <span class="fl">3500.25</span><span class="fu">,</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true"></a>      <span class="dt">&quot;growth_percentage&quot;</span><span class="fu">:</span> <span class="fl">12.5</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true"></a>    <span class="fu">},</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true"></a>    <span class="dt">&quot;customers&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true"></a>      <span class="dt">&quot;total&quot;</span><span class="fu">:</span> <span class="dv">89</span><span class="fu">,</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true"></a>      <span class="dt">&quot;new_this_month&quot;</span><span class="fu">:</span> <span class="dv">12</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true"></a>    <span class="fu">},</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true"></a>    <span class="dt">&quot;recent_activity&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true"></a>      <span class="fu">{</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true"></a>        <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;reservation&quot;</span><span class="fu">,</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true"></a>        <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Nueva reserva de Juan Pérez para 4 personas&quot;</span><span class="fu">,</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true"></a>        <span class="dt">&quot;created_at&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15T10:00:00Z&quot;</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true"></a>      <span class="fu">}</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true"></a>    <span class="ot">]</span></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="get-apidashboardreservationsstats">GET /api/dashboard/reservations/stats</h3>
+<p><strong>Descripción:</strong> Obtener estadísticas específicas de reservas <strong>Headers:</strong> Authorization: Bearer {token} <strong>Query Parameters:</strong> - <code>period</code> (opcional): Período (today, week, month, year) <strong>Response:</strong></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true"></a>    <span class="dt">&quot;total_reservations&quot;</span><span class="fu">:</span> <span class="dv">150</span><span class="fu">,</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true"></a>    <span class="dt">&quot;confirmed_reservations&quot;</span><span class="fu">:</span> <span class="dv">120</span><span class="fu">,</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true"></a>    <span class="dt">&quot;cancelled_reservations&quot;</span><span class="fu">:</span> <span class="dv">15</span><span class="fu">,</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true"></a>    <span class="dt">&quot;pending_reservations&quot;</span><span class="fu">:</span> <span class="dv">15</span><span class="fu">,</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true"></a>    <span class="dt">&quot;average_guests_per_reservation&quot;</span><span class="fu">:</span> <span class="fl">3.2</span><span class="fu">,</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true"></a>    <span class="dt">&quot;peak_hours&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;20:00&quot;</span><span class="ot">,</span> <span class="st">&quot;21:00&quot;</span><span class="ot">,</span> <span class="st">&quot;22:00&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true"></a>    <span class="dt">&quot;reservations_by_day&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true"></a>      <span class="fu">{</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true"></a>        <span class="dt">&quot;date&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-15&quot;</span><span class="fu">,</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true"></a>        <span class="dt">&quot;count&quot;</span><span class="fu">:</span> <span class="dv">8</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true"></a>      <span class="fu">}</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true"></a>    <span class="ot">]</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="widget-de-reservas">WIDGET DE RESERVAS</h2>
+<h3 id="get-apiwidgetreservationsrestaurant_slug">GET /api/widget/reservations/{restaurant_slug}</h3>
+<p><strong>Descripción:</strong> Obtener configuración del widget para un restaurante específico <strong>Response:</strong></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true"></a>    <span class="dt">&quot;restaurant&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true"></a>      <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Hamburguesería El Buen Sabor&quot;</span><span class="fu">,</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true"></a>      <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;hamburgueseria-el-buen-sabor&quot;</span><span class="fu">,</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true"></a>      <span class="dt">&quot;address&quot;</span><span class="fu">:</span> <span class="st">&quot;Calle Principal 123, Madrid&quot;</span><span class="fu">,</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true"></a>      <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 123 456 789&quot;</span><span class="fu">,</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true"></a>      <span class="dt">&quot;schedule&quot;</span><span class="fu">:</span> <span class="st">&quot;Lun-Dom: 12:00-16:00, 19:00-23:00&quot;</span><span class="fu">,</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true"></a>      <span class="dt">&quot;reservations_enabled&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true"></a>      <span class="dt">&quot;max_capacity&quot;</span><span class="fu">:</span> <span class="dv">50</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true"></a>    <span class="fu">},</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true"></a>    <span class="dt">&quot;widget_config&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true"></a>      <span class="dt">&quot;theme&quot;</span><span class="fu">:</span> <span class="st">&quot;cyan&quot;</span><span class="fu">,</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true"></a>      <span class="dt">&quot;available_times&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;12:00&quot;</span><span class="ot">,</span> <span class="st">&quot;12:30&quot;</span><span class="ot">,</span> <span class="st">&quot;13:00&quot;</span><span class="ot">,</span> <span class="st">&quot;19:00&quot;</span><span class="ot">,</span> <span class="st">&quot;19:30&quot;</span><span class="ot">,</span> <span class="st">&quot;20:00&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true"></a>      <span class="dt">&quot;max_advance_days&quot;</span><span class="fu">:</span> <span class="dv">30</span><span class="fu">,</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true"></a>      <span class="dt">&quot;min_advance_hours&quot;</span><span class="fu">:</span> <span class="dv">2</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true"></a>    <span class="fu">}</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="post-apiwidgetreservationsrestaurant_slugsubmit">POST /api/widget/reservations/{restaurant_slug}/submit</h3>
+<p><strong>Descripción:</strong> Enviar reserva desde el widget <strong>Body:</strong></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a>  <span class="dt">&quot;date&quot;</span><span class="fu">:</span> <span class="st">&quot;2024-01-20&quot;</span><span class="fu">,</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a>  <span class="dt">&quot;time&quot;</span><span class="fu">:</span> <span class="st">&quot;20:00&quot;</span><span class="fu">,</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a>  <span class="dt">&quot;guests&quot;</span><span class="fu">:</span> <span class="dv">4</span><span class="fu">,</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a>  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Juan Pérez&quot;</span><span class="fu">,</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true"></a>  <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;juan@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true"></a>  <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34 666 123 456&quot;</span><span class="fu">,</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true"></a>  <span class="dt">&quot;special_requests&quot;</span><span class="fu">:</span> <span class="st">&quot;Mesa cerca de la ventana&quot;</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a>    <span class="dt">&quot;reservation_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a>    <span class="dt">&quot;confirmation_code&quot;</span><span class="fu">:</span> <span class="st">&quot;ABC123&quot;</span><span class="fu">,</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a>    <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Reserva confirmada correctamente&quot;</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="notificaciones-y-comunicación">NOTIFICACIONES Y COMUNICACIÓN</h2>
+<h3 id="post-apinotificationsemail">POST /api/notifications/email</h3>
+<p><strong>Descripción:</strong> Enviar email de confirmación de reserva <strong>Headers:</strong> Authorization: Bearer {token} <strong>Body:</strong></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a>  <span class="dt">&quot;reservation_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a>  <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;confirmation&quot;</span><span class="fu">,</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a>  <span class="dt">&quot;to_email&quot;</span><span class="fu">:</span> <span class="st">&quot;juan@ejemplo.com&quot;</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true"></a>  <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Email enviado correctamente&quot;</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="post-apinotificationswhatsapp">POST /api/notifications/whatsapp</h3>
+<p><strong>Descripción:</strong> Enviar mensaje de WhatsApp <strong>Headers:</strong> Authorization: Bearer {token} <strong>Body:</strong></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a>  <span class="dt">&quot;reservation_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a>  <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="st">&quot;+34666123456&quot;</span><span class="fu">,</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true"></a>  <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Hola Juan, le recordamos su reserva para el 20/01/2024 a las 20:00&quot;</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a>  <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Mensaje de WhatsApp enviado&quot;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="configuración-y-utilidades">CONFIGURACIÓN Y UTILIDADES</h2>
+<h3 id="get-apiconfigavailable-times">GET /api/config/available-times</h3>
+<p><strong>Descripción:</strong> Obtener horarios disponibles para reservas <strong>Query Parameters:</strong> - <code>restaurant_slug</code>: Slug del restaurante - <code>date</code>: Fecha (YYYY-MM-DD) <strong>Response:</strong></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true"></a>    <span class="dt">&quot;available_times&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true"></a>      <span class="st">&quot;12:00&quot;</span><span class="ot">,</span> <span class="st">&quot;12:30&quot;</span><span class="ot">,</span> <span class="st">&quot;13:00&quot;</span><span class="ot">,</span> <span class="st">&quot;13:30&quot;</span><span class="ot">,</span> <span class="st">&quot;14:00&quot;</span><span class="ot">,</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true"></a>      <span class="st">&quot;19:00&quot;</span><span class="ot">,</span> <span class="st">&quot;19:30&quot;</span><span class="ot">,</span> <span class="st">&quot;20:00&quot;</span><span class="ot">,</span> <span class="st">&quot;20:30&quot;</span><span class="ot">,</span> <span class="st">&quot;21:00&quot;</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true"></a>    <span class="dt">&quot;max_capacity&quot;</span><span class="fu">:</span> <span class="dv">50</span><span class="fu">,</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true"></a>    <span class="dt">&quot;reservations_enabled&quot;</span><span class="fu">:</span> <span class="kw">true</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="post-apiconfigvalidate-slug">POST /api/config/validate-slug</h3>
+<p><strong>Descripción:</strong> Validar si un slug está disponible <strong>Body:</strong></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a>  <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;mi-restaurante&quot;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response:</strong></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a>  <span class="dt">&quot;data&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true"></a>    <span class="dt">&quot;available&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true"></a>    <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;mi-restaurante&quot;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="códigos-de-error">CÓDIGOS DE ERROR</h2>
+<h3 id="códigos-http">Códigos HTTP</h3>
+<ul>
+<li><code>200</code>: OK</li>
+<li><code>201</code>: Created</li>
+<li><code>400</code>: Bad Request</li>
+<li><code>401</code>: Unauthorized</li>
+<li><code>403</code>: Forbidden</li>
+<li><code>404</code>: Not Found</li>
+<li><code>422</code>: Unprocessable Entity</li>
+<li><code>500</code>: Internal Server Error</li>
+</ul>
+<h3 id="estructura-de-error">Estructura de Error</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true"></a>  <span class="dt">&quot;success&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true"></a>  <span class="dt">&quot;error&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true"></a>    <span class="dt">&quot;code&quot;</span><span class="fu">:</span> <span class="st">&quot;VALIDATION_ERROR&quot;</span><span class="fu">,</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true"></a>    <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Los datos proporcionados no son válidos&quot;</span><span class="fu">,</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true"></a>    <span class="dt">&quot;details&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true"></a>      <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;El email es requerido&quot;</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true"></a>      <span class="dt">&quot;phone&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;El teléfono debe tener un formato válido&quot;</span><span class="ot">]</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true"></a>    <span class="fu">}</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<h3 id="códigos-de-error-específicos">Códigos de Error Específicos</h3>
+<ul>
+<li><code>INVALID_CREDENTIALS</code>: Credenciales inválidas</li>
+<li><code>USER_NOT_FOUND</code>: Usuario no encontrado</li>
+<li><code>RESTAURANT_NOT_FOUND</code>: Restaurante no encontrado</li>
+<li><code>RESERVATION_NOT_FOUND</code>: Reserva no encontrada</li>
+<li><code>SLUG_NOT_AVAILABLE</code>: Slug no disponible</li>
+<li><code>RESERVATIONS_DISABLED</code>: Reservas desactivadas</li>
+<li><code>CAPACITY_EXCEEDED</code>: Capacidad excedida</li>
+<li><code>INVALID_DATE</code>: Fecha inválida</li>
+<li><code>INVALID_TIME</code>: Hora inválida</li>
+<li><code>VALIDATION_ERROR</code>: Error de validación</li>
+</ul>
+<hr />
+<h2 id="autenticación-jwt">AUTENTICACIÓN JWT</h2>
+<h3 id="headers-requeridos">Headers Requeridos</h3>
+<pre><code>Authorization: Bearer {jwt_token}
+Content-Type: application/json</code></pre>
+<h3 id="estructura-del-token">Estructura del Token</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true"></a>  <span class="dt">&quot;user_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true"></a>  <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;usuario@ejemplo.com&quot;</span><span class="fu">,</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true"></a>  <span class="dt">&quot;restaurant_id&quot;</span><span class="fu">:</span> <span class="dv">1</span><span class="fu">,</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true"></a>  <span class="dt">&quot;iat&quot;</span><span class="fu">:</span> <span class="dv">1642248000</span><span class="fu">,</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true"></a>  <span class="dt">&quot;exp&quot;</span><span class="fu">:</span> <span class="dv">1642251600</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="rate-limiting">RATE LIMITING</h2>
+<h3 id="límites-por-endpoint">Límites por Endpoint</h3>
+<ul>
+<li><strong>Autenticación</strong>: 5 requests/minuto por IP</li>
+<li><strong>Reservas</strong>: 10 requests/minuto por IP</li>
+<li><strong>Dashboard</strong>: 60 requests/minuto por usuario</li>
+<li><strong>Widget</strong>: 20 requests/minuto por IP</li>
+<li><strong>Blog</strong>: 30 requests/minuto por IP</li>
+</ul>
+<h3 id="headers-de-rate-limiting">Headers de Rate Limiting</h3>
+<pre><code>X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 59
+X-RateLimit-Reset: 1642251600</code></pre>
+<hr />
+<h2 id="base-de-datos">BASE DE DATOS</h2>
+<h3 id="tablas-principales">Tablas Principales</h3>
+<ol type="1">
+<li><strong>users</strong>: Información de usuarios</li>
+<li><strong>restaurants</strong>: Configuración de restaurantes</li>
+<li><strong>reservations</strong>: Reservas de clientes</li>
+<li><strong>blog_posts</strong>: Artículos del blog</li>
+<li><strong>notifications</strong>: Historial de notificaciones</li>
+</ol>
+<h3 id="relaciones">Relaciones</h3>
+<ul>
+<li><code>users</code> 1:1 <code>restaurants</code></li>
+<li><code>restaurants</code> 1:N <code>reservations</code></li>
+<li><code>reservations</code> N:1 <code>users</code> (cliente)</li>
+</ul>
+<hr />
+<h2 id="deployment">DEPLOYMENT</h2>
+<h3 id="variables-de-entorno">Variables de Entorno</h3>
+<pre><code>DATABASE_URL=postgresql://user:password@localhost:5432/conexianet
+JWT_SECRET=your_jwt_secret_here
+JWT_EXPIRES_IN=1h
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+WHATSAPP_API_URL=https://api.whatsapp.com
+WHATSAPP_TOKEN=your_whatsapp_token</code></pre>
+<h3 id="docker">Docker</h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true"></a><span class="kw">FROM</span> node:18-alpine</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true"></a><span class="kw">COPY</span> package*.json ./</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true"></a><span class="kw">RUN</span> npm install</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true"></a><span class="kw">COPY</span> . .</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true"></a><span class="kw">EXPOSE</span> 3000</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true"></a><span class="kw">CMD</span> [<span class="st">&quot;npm&quot;</span>, <span class="st">&quot;start&quot;</span>]</span></code></pre></div>
+<hr />
+<h2 id="testing">TESTING</h2>
+<h3 id="endpoints-de-testing">Endpoints de Testing</h3>
+<ul>
+<li><code>GET /api/health</code>: Health check</li>
+<li><code>GET /api/test/db</code>: Test de conexión a base de datos</li>
+<li><code>POST /api/test/email</code>: Test de envío de emails</li>
+</ul>
+<h3 id="datos-de-prueba">Datos de Prueba</h3>
+<div class="sourceCode" id="cb41"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true"></a><span class="fu">{</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true"></a>  <span class="dt">&quot;test_user&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true"></a>    <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="st">&quot;test@conexianet.com&quot;</span><span class="fu">,</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true"></a>    <span class="dt">&quot;password&quot;</span><span class="fu">:</span> <span class="st">&quot;test123&quot;</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true"></a>  <span class="fu">},</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true"></a>  <span class="dt">&quot;test_restaurant&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true"></a>    <span class="dt">&quot;slug&quot;</span><span class="fu">:</span> <span class="st">&quot;test-restaurant&quot;</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true"></a>  <span class="fu">}</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h2 id="documentación-adicional">DOCUMENTACIÓN ADICIONAL</h2>
+<h3 id="swaggeropenapi">Swagger/OpenAPI</h3>
+<ul>
+<li>URL: <code>/api/docs</code></li>
+<li>Especificación completa de todos los endpoints</li>
+</ul>
+<h3 id="postman-collection">Postman Collection</h3>
+<ul>
+<li>Archivo: <code>conexianet-api.postman_collection.json</code></li>
+<li>Incluye todos los endpoints con ejemplos</li>
+</ul>
+<h3 id="sdks-disponibles">SDKs Disponibles</h3>
+<ul>
+<li>JavaScript/Node.js</li>
+<li>Python</li>
+<li>PHP</li>
+<li>Java</li>
+</ul>
+<hr />
+<p><strong>Versión:</strong> 1.0.0 <strong>Última actualización:</strong> 15 de Enero, 2024 <strong>Autor:</strong> Equipo ConexiaNet</p>
+</body>
+</html>

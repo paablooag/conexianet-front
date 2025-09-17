@@ -248,3 +248,4 @@ const generateReport = () => {
   alert(`Reporte generado:\nEfectivo: €${cashAmount.value.toFixed(2)}\nTarjeta: €${cardAmount.value.toFixed(2)}\nTotal: €${totalSales.value.toFixed(2)}\nPedidos: ${totalOrders.value}`)
 }
 </script>
+

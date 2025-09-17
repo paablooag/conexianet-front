@@ -227,3 +227,4 @@ const suppliersCount = computed(() => {
   return contacts.value.filter(contact => contact.type === 'Proveedor').length
 })
 </script>
+

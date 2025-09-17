@@ -176,3 +176,4 @@ const generateMonthlyReport = () => {
   alert('Reporte mensual generado y enviado por email')
 }
 </script>
+

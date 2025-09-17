@@ -193,3 +193,4 @@ const totalClicks = computed(() => {
   return campaigns.value.reduce((sum, campaign) => sum + campaign.clicks, 0)
 })
 </script>
+

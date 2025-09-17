@@ -239,3 +239,4 @@ const downloadSCReport = (type) => {
   alert(`Descargando reporte de ${type} de Search Console...`)
 }
 </script>
+

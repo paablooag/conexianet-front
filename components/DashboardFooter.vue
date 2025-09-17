@@ -125,3 +125,4 @@
 <script setup>
 // No additional logic needed for footer
 </script>
+

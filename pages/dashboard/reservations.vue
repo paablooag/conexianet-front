@@ -4,9 +4,14 @@
     <div class="space-y-8">
       <div class="flex justify-between items-center">
         <h1 class="text-3xl font-mono font-bold text-gray-900">GESTIÓN DE RESERVAS</h1>
-        <Button variant="neon" @click="showNewReservation = true">
-          + NUEVA RESERVA
-        </Button>
+        <div class="flex space-x-3">
+          <Button variant="outline" @click="showRestaurantConfig = true">
+            CONFIGURAR RESTAURANTE
+          </Button>
+          <Button variant="neon" @click="showNewReservation = true">
+            + NUEVA RESERVA
+          </Button>
+        </div>
       </div>
 
       <!-- Reservations Stats -->
@@ -320,6 +325,178 @@
           </div>
         </div>
       </div>
+
+      <!-- Modal de Configuración del Restaurante -->
+      <div v-if="showRestaurantConfig" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" @click="closeRestaurantConfig">
+        <div class="bg-white rounded-lg p-6 max-w-2xl w-full mx-4" @click.stop>
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-2xl font-mono font-bold text-gray-900">CONFIGURACIÓN DEL RESTAURANTE</h3>
+            <button @click="closeRestaurantConfig" class="text-gray-400 hover:text-gray-600">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Estado del Restaurante -->
+          <div v-if="restaurant" class="mb-6">
+            <div class="bg-gradient-to-r from-cyan-50 to-blue-50 rounded-lg p-4 border border-cyan-200">
+              <div class="flex items-center justify-between">
+                <div class="flex-1">
+                  <h5 class="font-mono font-semibold text-gray-900">{{ restaurant.name }}</h5>
+                  <p class="text-sm font-mono text-gray-600">{{ restaurant.address }}</p>
+                  <p class="text-xs font-mono text-gray-500">Slug: {{ restaurant.slug }}</p>
+                  <div class="flex items-center space-x-4 mt-2">
+                    <span class="text-xs font-mono text-gray-600">
+                      Capacidad: {{ restaurant.maxCapacity }} personas
+                    </span>
+                    <span :class="[
+                      'px-2 py-1 text-xs font-mono rounded-full',
+                      restaurant.reservationsEnabled ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                    ]">
+                      {{ restaurant.reservationsEnabled ? 'RESERVAS ACTIVAS' : 'RESERVAS DESACTIVADAS' }}
+                    </span>
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span :class="[
+                    'px-2 py-1 text-xs font-mono rounded-full',
+                    restaurant.hasReservationPage ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                  ]">
+                  </span>
+                  <Button 
+                    v-if="!restaurant.hasReservationPage"
+                    variant="neon" 
+                    size="sm" 
+                    @click="createReservationPage"
+                  >
+                    CREAR PÁGINA
+                  </Button>
+                  <Button 
+                    v-else
+                    variant="outline" 
+                    size="sm" 
+                    @click="viewReservationPage"
+                  >
+                    VER PÁGINA
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario de Configuración -->
+          <form @submit.prevent="saveRestaurant" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-mono font-semibold text-gray-900 mb-2">NOMBRE DEL RESTAURANTE *</label>
+                <input 
+                  type="text" 
+                  v-model="restaurantForm.name"
+                  class="w-full px-4 py-3 border border-cyan-400 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-mono font-semibold text-gray-900 mb-2">SLUG (URL) *</label>
+                <input 
+                  type="text" 
+                  v-model="restaurantForm.slug"
+                  class="w-full px-4 py-3 border border-cyan-400 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  placeholder="mi-restaurante"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-mono font-semibold text-gray-900 mb-2">DIRECCIÓN *</label>
+                <input 
+                  type="text" 
+                  v-model="restaurantForm.address"
+                  class="w-full px-4 py-3 border border-cyan-400 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  required
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-mono font-semibold text-gray-900 mb-2">TELÉFONO *</label>
+                <input 
+                  type="tel" 
+                  v-model="restaurantForm.phone"
+                  class="w-full px-4 py-3 border border-cyan-400 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  required
+                />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-mono font-semibold text-gray-900 mb-2">HORARIOS *</label>
+                <input 
+                  type="text" 
+                  v-model="restaurantForm.schedule"
+                  class="w-full px-4 py-3 border border-cyan-400 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  placeholder="Lun-Dom: 12:00-16:00, 19:00-23:00"
+                  required
+                />
+              </div>
+              <div class="md:col-span-2">
+                <label class="block text-sm font-mono font-semibold text-gray-900 mb-2">DESCRIPCIÓN</label>
+                <textarea 
+                  v-model="restaurantForm.description"
+                  rows="3"
+                  class="w-full px-4 py-3 border border-cyan-400 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                  placeholder="Descripción del restaurante..."
+                ></textarea>
+              </div>
+              
+              <!-- Configuración de Reservas -->
+              <div class="md:col-span-2 border-t pt-4">
+                <h4 class="text-lg font-mono font-semibold text-gray-900 mb-4">CONFIGURACIÓN DE RESERVAS</h4>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-mono font-semibold text-gray-900 mb-2">CAPACIDAD MÁXIMA *</label>
+                    <input 
+                      type="number" 
+                      v-model.number="restaurantForm.maxCapacity"
+                      min="1"
+                      max="200"
+                      class="w-full px-4 py-3 border border-cyan-400 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400"
+                      required
+                    />
+                    <p class="text-xs font-mono text-gray-500 mt-1">Número máximo de clientes que puede alojar el restaurante</p>
+                  </div>
+                  
+                  <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                      <input 
+                        type="checkbox" 
+                        id="reservationsEnabled"
+                        v-model="restaurantForm.reservationsEnabled"
+                        class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 rounded focus:ring-cyan-500 focus:ring-2"
+                      />
+                      <label for="reservationsEnabled" class="ml-2 text-sm font-mono font-semibold text-gray-900">
+                        RESERVAS ACTIVADAS
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div v-if="!restaurantForm.reservationsEnabled" class="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <p class="text-sm font-mono text-yellow-800">
+                    ⚠️ Las reservas están desactivadas. Los clientes no podrán hacer reservas hasta que las actives.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex justify-end space-x-3">
+              <Button type="button" variant="outline" @click="closeRestaurantConfig">
+                CANCELAR
+              </Button>
+              <Button type="submit" variant="neon" :disabled="savingRestaurant">
+                {{ savingRestaurant ? 'GUARDANDO...' : 'GUARDAR CONFIGURACIÓN' }}
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </DashboardLayout>
 </template>
@@ -342,6 +519,34 @@ const expandedDays = ref(new Set())
 // Modal data
 const selectedReservation = ref(null)
 const showReservationModal = ref(false)
+const showRestaurantConfig = ref(false)
+
+// Restaurant management (single restaurant per account)
+const restaurant = ref({
+  id: 1,
+  name: 'Hamburguesería El Buen Sabor',
+  slug: 'hamburgueseria-el-buen-sabor',
+  address: 'Calle Principal 123, Madrid',
+  phone: '+34 123 456 789',
+  schedule: 'Lun-Dom: 12:00-16:00, 19:00-23:00',
+  description: 'Hamburguesería especializada en hamburguesas gourmet con ingredientes frescos.',
+  hasReservationPage: true,
+  reservationsEnabled: true,
+  maxCapacity: 50
+})
+
+const restaurantForm = ref({
+  name: '',
+  slug: '',
+  address: '',
+  phone: '',
+  schedule: '',
+  description: '',
+  reservationsEnabled: true,
+  maxCapacity: 50
+})
+
+const savingRestaurant = ref(false)
 
 // Reservations data
 const reservations = ref([
@@ -754,4 +959,67 @@ const toggleDayExpansion = (date) => {
     expandedDays.value.add(date)
   }
 }
+
+// Restaurant management functions
+const closeRestaurantConfig = () => {
+  showRestaurantConfig.value = false
+  // Load current restaurant data into form
+  if (restaurant.value) {
+    restaurantForm.value = { ...restaurant.value }
+  }
+}
+
+const saveRestaurant = async () => {
+  try {
+    savingRestaurant.value = true
+    
+    // TODO: Replace with actual API endpoint
+    const response = await $fetch('/api/restaurant', {
+      method: 'PUT',
+      body: restaurantForm.value
+    })
+    
+    // Update local state
+    restaurant.value = { ...restaurantForm.value }
+    
+    alert('Configuración del restaurante guardada correctamente')
+    closeRestaurantConfig()
+  } catch (err) {
+    console.error('Error saving restaurant:', err)
+    alert('Error al guardar la configuración. Por favor, inténtalo de nuevo.')
+  } finally {
+    savingRestaurant.value = false
+  }
+}
+
+const createReservationPage = async () => {
+  try {
+    // TODO: Replace with actual API endpoint
+    await $fetch('/api/restaurant/create-reservation-page', {
+      method: 'POST'
+    })
+    
+    // Update local state
+    restaurant.value.hasReservationPage = true
+    
+    alert(`Página de reservas creada para ${restaurant.value.name}`)
+  } catch (err) {
+    console.error('Error creating reservation page:', err)
+    alert('Error al crear la página de reservas. Por favor, inténtalo de nuevo.')
+  }
+}
+
+const viewReservationPage = () => {
+  // Open reservation page in new tab
+  const url = `/reservas/${restaurant.value.slug}`
+  window.open(url, '_blank')
+}
+
+// Load restaurant data when component mounts
+onMounted(() => {
+  if (restaurant.value) {
+    restaurantForm.value = { ...restaurant.value }
+  }
+})
 </script>
+

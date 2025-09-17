@@ -220,3 +220,4 @@ const categoriesCount = computed(() => {
   return categories.size
 })
 </script>
+

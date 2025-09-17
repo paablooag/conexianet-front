@@ -315,10 +315,10 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <div class="inline-block px-4 py-2 border border-cyan-400 text-cyan-400 text-sm font-mono mb-4">
-            [ CONEXIANET HAMBURGUESAS ]
+            [ CONEXIANET HAMBURGUESERIAS ]
           </div>
           <h2 class="text-3xl md:text-5xl font-mono font-bold text-gray-900 mb-6">
-            ¿QUÉ OFRECE CONEXIANET HAMBURGUESAS?
+            ¿QUÉ OFRECE CONEXIANET HAMBURGUESERIAS?
           </h2>
           <p class="text-lg text-gray-600 max-w-3xl mx-auto font-mono">
             Una solución integral diseñada específicamente para hamburgueserías que combina gestión, automatización y marketing en una sola plataforma.
@@ -448,7 +448,7 @@
                 [ PLAN COMPLETO ]
               </div>
               
-              <h3 class="text-3xl font-mono font-bold text-gray-900 mb-4">CONEXIANET HAMBURGUESAS</h3>
+              <h3 class="text-3xl font-mono font-bold text-gray-900 mb-4">CONEXIANET HAMBURGUESERIAS</h3>
               
               <div class="mb-8">
                 <span class="text-6xl font-mono font-bold text-cyan-600">20€</span>
@@ -547,6 +547,26 @@
       </div>
     </section>
 
+    <!-- Blog Section -->
+    <section class="py-20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <div class="inline-block px-4 py-2 border border-cyan-400 text-cyan-400 text-sm font-mono mb-4">
+            [ BLOG CONEXIANET ]
+          </div>
+          <h2 class="text-3xl md:text-5xl font-mono font-bold text-gray-900 mb-6">
+            CONSEJOS Y TENDENCIAS PARA TU HAMBURGUESERÍA
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto font-mono mb-8">
+            Descubre las últimas tendencias, consejos y estrategias para optimizar tu hamburguesería con tecnología de vanguardia.
+          </p>
+          <Button variant="neon" size="lg" @click="handleBlog">
+            [ VER BLOG COMPLETO ]
+          </Button>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Final -->
     <section class="py-20 relative overflow-hidden">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -636,5 +656,9 @@ const handleDemo = () => {
 
 const handleRegister = () => {
   navigateTo('/iniciar-sesion?mode=register')
+}
+
+const handleBlog = () => {
+  navigateTo('/blog')
 }
 </script>

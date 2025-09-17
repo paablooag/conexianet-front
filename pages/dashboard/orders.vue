@@ -205,3 +205,4 @@ const totalSales = computed(() => {
     .reduce((sum, order) => sum + order.total, 0)
 })
 </script>
+
