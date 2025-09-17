@@ -13,81 +13,117 @@
 ## AUTENTICACIÓN Y USUARIOS
 
 ### POST /api/auth/register
-**Descripción:** Registro de nuevos usuarios
-**Body:**
+**Descripción:** Registra un nuevo usuario en el sistema.
+
+- **email**: Email único del usuario
+- **name**: Nombre del usuario
+- **password**: Contraseña del usuario (se encripta automáticamente)
+- **restaurant_name**: Nombre del restaurante
+
+Retorna la información del usuario creado y un token JWT.
+
+**Request Body:**
 ```json
 {
-  "email": "usuario@ejemplo.com",
-  "password": "password123",
-  "name": "Nombre Usuario",
-  "restaurant_name": "Mi Restaurante"
+  "email": "string",
+  "name": "string",
+  "password": "string",
+  "restaurant_name": "string"
 }
 ```
-**Response:**
+
+**Response 200 - Successful Response:**
 ```json
 {
   "success": true,
   "data": {
-    "user": {
-      "id": 1,
-      "email": "usuario@ejemplo.com",
-      "name": "Nombre Usuario",
-      "created_at": "2024-01-15T10:00:00Z"
-    },
-    "token": "jwt_token_here"
+    "additionalProp1": {}
   }
+}
+```
+
+**Response 422 - Validation Error:**
+```json
+{
+  "detail": [
+    {
+      "loc": [
+        "string",
+        0
+      ],
+      "msg": "string",
+      "type": "string"
+    }
+  ]
 }
 ```
 
 ### POST /api/auth/login
-**Descripción:** Inicio de sesión de usuarios
-**Body:**
+**Descripción:** Autentica un usuario y retorna un token de acceso.
+
+- **email**: Email del usuario
+- **password**: Contraseña del usuario
+
+Retorna un token JWT que debe usarse en las cabeceras de las peticiones autenticadas. El token expira en 24 horas por defecto.
+
+**Request Body:**
 ```json
 {
-  "email": "usuario@ejemplo.com",
-  "password": "password123"
+  "email": "string",
+  "password": "string"
 }
 ```
-**Response:**
+
+**Response 200 - Successful Response:**
 ```json
 {
   "success": true,
   "data": {
-    "user": {
-      "id": 1,
-      "email": "usuario@ejemplo.com",
-      "name": "Nombre Usuario"
-    },
-    "token": "jwt_token_here"
+    "additionalProp1": {}
   }
 }
 ```
 
+**Response 422 - Validation Error:**
+```json
+{
+  "detail": [
+    {
+      "loc": [
+        "string",
+        0
+      ],
+      "msg": "string",
+      "type": "string"
+    }
+  ]
+}
+```
+
 ### POST /api/auth/logout
-**Descripción:** Cerrar sesión
-**Headers:** Authorization: Bearer {token}
-**Response:**
+**Descripción:** Cierra la sesión del usuario actual.
+
+Aunque el token JWT no se puede invalidar del lado del servidor, este endpoint se mantiene para consistencia con la API. El cliente debe eliminar el token de su almacenamiento local.
+
+**Response 200 - Successful Response:**
 ```json
 {
   "success": true,
-  "message": "Sesión cerrada correctamente"
+  "message": "string"
 }
 ```
 
 ### GET /api/auth/me
-**Descripción:** Obtener información del usuario autenticado
-**Headers:** Authorization: Bearer {token}
-**Response:**
+**Descripción:** Obtiene la información del usuario autenticado.
+
+Retorna los datos del usuario incluyendo el ID del restaurante asociado.
+
+**Response 200 - Successful Response:**
 ```json
 {
   "success": true,
   "data": {
-    "user": {
-      "id": 1,
-      "email": "usuario@ejemplo.com",
-      "name": "Nombre Usuario",
-      "restaurant_id": 1
-    }
+    "additionalProp1": {}
   }
 }
 ```

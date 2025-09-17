@@ -40,14 +40,14 @@
                <form @submit.prevent="handleLogin" class="space-y-6">
                 <div>
                   <label class="block text-sm font-mono font-semibold text-gray-700 mb-2">
-                    USUARIO
+                    EMAIL
                   </label>
                   <input
                     v-model="loginForm.username"
-                    type="text"
+                    type="email"
                     required
                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 font-mono text-gray-900 bg-white"
-                    placeholder="Ingresa tu usuario"
+                    placeholder="Ingresa tu email"
                   />
                 </div>
 
@@ -186,21 +186,40 @@
                    </div>
                  </div>
 
-                 <!-- Bloque 2: Confirmar Email y Contraseña -->
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                 <!-- Bloque 2: Nombre del Usuario -->
+                 <div class="grid grid-cols-1 gap-8">
                    <div>
                     <label class="block text-sm font-mono font-semibold text-gray-700 mb-3">
-                       USUARIO
+                       NOMBRE COMPLETO
                      </label>
                      <input
-                       v-model="registerForm.username"
+                       v-model="registerForm.name"
                        type="text"
                        required
                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300 font-mono text-gray-900 bg-white"
-                       placeholder="Elige tu nombre de usuario"
+                       placeholder="Tu nombre completo"
                      />
                    </div>
+                 </div>
 
+                 <!-- Bloque 3: Nombre del Restaurante -->
+                 <div class="grid grid-cols-1 gap-8">
+                   <div>
+                     <label class="block text-sm font-mono font-semibold text-gray-700 mb-3">
+                       NOMBRE DEL RESTAURANTE
+                     </label>
+                     <input
+                       v-model="registerForm.restaurant_name"
+                       type="text"
+                       required
+                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-300 font-mono text-gray-900 bg-white"
+                       placeholder="Nombre de tu restaurante"
+                     />
+                   </div>
+                 </div>
+
+                 <!-- Bloque 4: Contraseña -->
+                 <div class="grid grid-cols-1 gap-8">
                    <div>
                      <label class="block text-sm font-mono font-semibold text-gray-700 mb-3">
                        CONTRASEÑA
@@ -348,10 +367,11 @@ const loginForm = ref({
 })
 
 const registerForm = ref({
-  username: '',
+  name: '',
   email: '',
   confirmEmail: '',
-  password: ''
+  password: '',
+  restaurant_name: ''
 })
 
 // Methods
@@ -373,14 +393,14 @@ const handleLogin = async () => {
   isLoading.value = true
   
   try {
-    const response = await $fetch('http://127.0.0.1:8000/login', {
+    const response = await $fetch('http://127.0.0.1:8000/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'accept': 'application/json'
       },
       body: {
-        username: loginForm.value.username,
+        email: loginForm.value.username,
         password: loginForm.value.password
       }
     })
@@ -407,16 +427,17 @@ const handleRegister = async () => {
   isLoading.value = true
   
   try {
-    const response = await $fetch('http://127.0.0.1:8000/register', {
+    const response = await $fetch('http://127.0.0.1:8000/api/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'accept': 'application/json'
       },
       body: {
-        username: registerForm.value.username,
         email: registerForm.value.email,
-        password: registerForm.value.password
+        name: registerForm.value.name,
+        password: registerForm.value.password,
+        restaurant_name: registerForm.value.restaurant_name
       }
     })
     
@@ -430,10 +451,11 @@ const handleRegister = async () => {
       switchToLogin()
       // Limpiar el formulario de registro
       registerForm.value = {
-        username: '',
+        name: '',
         email: '',
         confirmEmail: '',
-        password: ''
+        password: '',
+        restaurant_name: ''
       }
       acceptTerms.value = false
       showSuccessMessage.value = false
