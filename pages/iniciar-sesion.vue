@@ -300,11 +300,32 @@
 </template>
 
 <script setup>
-// Meta tags
+// Meta tags SEO optimizados
 useHead({
-  title: 'Autenticación - ConexiaNet ADRE',
+  title: 'Iniciar Sesión - ConexiaNet ADRE',
   meta: [
-    { name: 'description', content: 'Accede a ConexiaNet ADRE - Asistente Digital de Relaciones Empresariales' }
+    { name: 'description', content: 'Accede a ConexiaNet ADRE - Software para hamburgueserías. Gestiona pedidos, automatiza marketing y centraliza contactos de tu restaurante. Prueba gratis.' },
+    { name: 'keywords', content: 'iniciar sesión, login, software hamburgueserías, ConexiaNet ADRE, CRM restaurantes, gestión pedidos, automatización restaurante' },
+    { name: 'author', content: 'ConexiaNet' },
+    { name: 'robots', content: 'noindex, nofollow' },
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'theme-color', content: '#06b6d4' },
+    
+    // Open Graph / Facebook
+    { property: 'og:type', content: 'website' },
+    { property: 'og:title', content: 'Iniciar Sesión - ConexiaNet ADRE' },
+    { property: 'og:description', content: 'Accede a ConexiaNet ADRE - Software especializado para hamburgueserías. Automatiza pedidos y gestiona contactos.' },
+    { property: 'og:url', content: 'https://conexianet.com/iniciar-sesion' },
+    { property: 'og:site_name', content: 'ConexiaNet ADRE' },
+    { property: 'og:locale', content: 'es_ES' },
+    
+    // Twitter
+    { name: 'twitter:card', content: 'summary' },
+    { name: 'twitter:title', content: 'Iniciar Sesión - ConexiaNet ADRE' },
+    { name: 'twitter:description', content: 'Accede a tu cuenta de ConexiaNet ADRE para gestionar tu hamburguesería.' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://conexianet.com/iniciar-sesion' }
   ]
 })
 
@@ -365,8 +386,8 @@ const handleLogin = async () => {
     })
     
     console.log('Login successful:', response)
-    // Aquí puedes manejar la respuesta del login
-    // Por ejemplo, guardar el token, redirigir, etc.
+    // Redirigir al dashboard después del login exitoso
+    navigateTo('/dashboard')
     
   } catch (error) {
     console.error('Login error:', error)
